@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Formulario de pedidos</title>
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+    crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <!-- ELECCIÓN DE FORMULARIO SEGÚN PRODUCTO -->
+            <div class="form-group">
+                <form action="index.php" method="post">
+                    Elija un producto: 
+                    <select id="status" name="status" onChange="mostrar(this.value);">
+                        <option selected>Despliegue para ver los productos</option>
+                        <option value="tarjeta">Tarjetas de Visita</option>
+                        <option value="flyer">Flyers</option>
+                     </select>
+                </form>
+            </div>
+
+            <!-- FORMULARIO DE TARJETAS DE VISITA -->
+            <div id="tarjeta" class="row" style="display: none;">
+                <div class="col-md-6">
+                    <img class="img-responsive img-portfolio img-hover" 
+                    src="http://placehold.it/545x522" alt="Tarjetas de Visita" 
+                    width="345px" height="250px">
+                    <h3>Detalles del Producto</h3>
+                    <p>Aquí los detalles del producto: <br>
+                    Información del producto, características...
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <fieldset>
+                            <legend><span>Pedido de Tarjetas de Visita</span></legend>
+                            <form class="form" method="POST" enctype="multipart/form-data"
+                             action="../php/procesadoPedido.php">
+
+                                <label for="emailCl">Email del cliente* </label><a name="emailCl"></a><br>
+                                <input class="form-control" tabindex="1" type="email" name="emailCl" placeholder="Introduce un Email de cliente" required>
+
+                                <label for="passCl">Password* </label><a name="passCl"></a><br>
+                                <input class="form-control" tabindex="2" type="password" name="passCl" placeholder="Contraseña del cliente" required>
+                                
+                                <label for="impresion">Impresion* </label><a name="impresion"></a>
+                                    <select name="impresion" class="form-control" required>
+                                            <option value="color1Cara" selected>Color 1 Cara</option>
+                                            <option value="color1Cara">Color 2 Caras</option>
+                                            <option value="color1Cara">Blanco/Negro 1 Cara</option>
+                                            <option value="color1Cara">Blanco/Negro 2 Caras</option>                           
+                                    </select>
+
+                                <label for="acabado">Acabado* </label><a name="acabado"></a>
+                                    <select name="acabado" class="form-control" required>
+                                            <option value="sinSolapa" selected>Normal</option>                           
+                                    </select>
+
+                                <label for="tipoPapel">Tipo de Papel* </label><a name="tipoPapel"></a>
+                                    <select name="tipoPapel" class="form-control" required>
+                                            <option value="300GrBrillo" selected>300 Gr Brillo</option>
+                                            <option value="80GrComun">80 Gr Común</option>                           
+                                    </select>
+
+                                <label for="tamanoProducto">Tamaño* </label><a name="tamanoProducto"></a>
+                                    <select name="tamanoProducto" class="form-control" required>
+                                            <option value="85x85" selected>85x85</option>                           
+                                    </select> 
+                    
+                                <label for="cantidad">Cantidad* </label><a name="cantidad"></a>
+                                    <select id="cantidad" name="cantidad" class="form-control" required>
+                                            <option value="100">100 (10€)</option> 
+                                            <option value="500">500 (20€)</option>
+                                            <option value="1000">1000 (35€)</option>
+                                            <option value="2000" selected>2000 (50€)</option>                          
+                                    </select>
+
+                                <label for="pago">Pago* </label><a name="pago"></a>
+                                    <select name="pago" class="form-control" required>
+                                            <option value="tienda" selected>En tienda</option> 
+                                            <option value="entrega">Con la entrega</option>                          
+                                    </select>
+
+                                <label for="envio">Envio* </label><a name="envio"></a>
+                                    <select name="envio" class="form-control" required>
+                                            <option value="recogida" selected>Recogida en tienda</option>
+                                            <option value="domicilio">Envio al domicilio</option>                           
+                                    </select> 
+
+                                <label for="compraTarjeta"></label><a name="compraTarjeta"></a>
+                                <button type="submit" name="compraTarjeta" class="btn btn-default"/>Comprar</button>
+
+                            </form> 
+
+                        </fieldset>                     
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMULARIO DE FLYERS -->
+            <div id="flyer" class="row" style="display: none;">
+                <div class="col-md-6">
+                    <img class="img-responsive img-portfolio img-hover" 
+                    src="http://placehold.it/545x522" alt="Tarjetas de Visita" 
+                    width="345px" height="250px">
+                    <h3>Detalles del Producto</h3>
+                    <p>Aquí los detalles del producto: <br>
+                    Información del producto, características...
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <fieldset>
+                            <legend><span>Pedido de Flyers</span></legend>
+                            <form class="form" method="POST" enctype="multipart/form-data"
+                             action="../php/procesadoPedido.php">
+
+                                <label for="emailCl">Email del cliente* </label><a name="emailCl"></a><br>
+                                <input class="form-control" tabindex="1" type="email" name="emailCl" placeholder="Introduce un Email de cliente" required>
+
+                                <label for="passCl">Password* </label><a name="passCl"></a><br>
+                                <input class="form-control" tabindex="2" type="password" name="passCl" placeholder="Contraseña del cliente" required>
+                                
+                                <label for="impresion">Impresion* </label><a name="impresion"></a>
+                                    <select name="impresion" class="form-control" required>
+                                            <option value="color1Cara" selected>Color 1 Cara</option>
+                                            <option value="color1Cara">Color 2 Caras</option>
+                                            <option value="color1Cara">Blanco/Negro 1 Cara</option>
+                                            <option value="color1Cara">Blanco/Negro 2 Caras</option>                           
+                                    </select>
+
+                                <label for="acabado">Acabado* </label><a name="acabado"></a>
+                                    <select name="acabado" class="form-control" required>
+                                            <option value="sinSolapa" selected>Normal</option>                           
+                                    </select>
+
+                                <label for="tipoPapel">Tipo de Papel* </label><a name="tipoPapel"></a>
+                                    <select name="tipoPapel" class="form-control" required>
+                                            <option value="300GrBrillo" selected>300 Gr Brillo</option>
+                                            <option value="80GrComun">80 Gr Común</option>                           
+                                    </select>
+
+                                <label for="tamanoProducto">Tamaño* </label><a name="tamanoProducto"></a>
+                                    <select name="tamanoProducto" class="form-control" required>
+                                            <option value="85x85" selected>85x85</option>                           
+                                    </select> 
+                    
+                                <label for="cantidad">Cantidad* </label><a name="cantidad"></a>
+                                    <select id="cantidad" name="cantidad" class="form-control" required>
+                                            <option value="100">100 (10€)</option> 
+                                            <option value="500">500 (20€)</option>
+                                            <option value="1000">1000 (35€)</option>
+                                            <option value="2000" selected>2000 (50€)</option>                          
+                                    </select>
+
+                                <label for="pago">Pago* </label><a name="pago"></a>
+                                    <select name="pago" class="form-control" required>
+                                            <option value="tienda" selected>En tienda</option> 
+                                            <option value="entrega">Con la entrega</option>                          
+                                    </select>
+
+                                <label for="envio">Envio* </label><a name="envio"></a>
+                                    <select name="envio" class="form-control" required>
+                                            <option value="recogida" selected>Recogida en tienda</option>
+                                            <option value="domicilio">Envio al domicilio</option>                           
+                                    </select> 
+
+                                <label for="compraTarjeta"></label><a name="compraFlyer"></a>
+                                <button type="submit" name="compraTarjeta" class="btn btn-default"/>Comprar</button>
+
+                            </form> 
+
+                        </fieldset>                     
+                        
+                    </div>
+                </div>
+            </div>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   
+        crossorigin="anonymous">
+    </script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+        crossorigin="anonymous">   
+    </script>
+
+    <!-- Scripts elección formulario -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
